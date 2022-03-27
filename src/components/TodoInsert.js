@@ -3,10 +3,10 @@ import { MdAdd } from 'react-icons/md';
 import styled from 'styled-components';
 
 const TodoInsert = ({ onInsert }) => {
-  const [value, setValue] = useState(''); // <<- 값을 가져오는 것이 아니라 단순 셋팅이기 때문에 불변성과 무관하다.
+  const [value, setValue] = useState('');
 
   const onChange = (e) => {
-    setValue(() => e.target.value);
+    setValue((preValue) => (preValue = e.target.value)); // 함수형 업데이터
   };
 
   const onSubmit = useCallback(
